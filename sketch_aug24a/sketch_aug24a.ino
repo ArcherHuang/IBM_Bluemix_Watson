@@ -18,9 +18,7 @@ int TouchPin = 5;
 void setup() 
 {
     Serial.begin(9600); 
-    dht.begin();
-    Bridge.begin();
-
+    
     // Touch Sensor
     pinMode(TouchPin, INPUT);
 
@@ -32,6 +30,9 @@ void setup()
     SeeedGrayOled.setVerticalMode();  // Set to vertical mode for displaying text
     SeeedGrayOled.setTextXY(0,0); //設定啟始坐標
     SeeedGrayOled.putString("Env Info"); 
+
+    dht.begin();
+    Bridge.begin();
 }
 
 void loop() 
