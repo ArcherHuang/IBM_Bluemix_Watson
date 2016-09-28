@@ -19,6 +19,7 @@ void setup()
 {
     Serial.begin(9600); 
     dht.begin();
+    Bridge.begin();
 
     // Touch Sensor
     pinMode(TouchPin, INPUT);
