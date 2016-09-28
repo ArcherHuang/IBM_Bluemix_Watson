@@ -37,15 +37,7 @@ void setup()
 void loop() 
 {
     int sensorValue = digitalRead(TouchPin);
-    if(sensorValue==1)
-    {
-      Serial.print(" touch sensor pressed ");
-    }else{
-      //Serial.print(" touch sensor do not touch ");
-    }
-    Serial.print("\n");
     
-
     float h = dht.readHumidity();
     float t = dht.readTemperature();
 
@@ -62,7 +54,7 @@ void loop()
         Serial.print(" %\t");
         Serial.print("Temperature: "); 
         Serial.print(t);
-        Serial.println(" *C");
+        Serial.print(" *C\t");
 
         // OLED
        SeeedGrayOled.setTextXY(2,0); //設定啟始坐標
@@ -73,6 +65,14 @@ void loop()
        SeeedGrayOled.putString("Humi: "); 
        SeeedGrayOled.putNumber(h); 
        SeeedGrayOled.putString(" %"); 
+
+       if(sensorValue==1)
+       {
+          Serial.print(" touch sensor pressed ");
+       }else{
+          Serial.print(" touch sensor do not touch ");
+       }
+       Serial.print("\n");
 
        // Bridge
        Bridge.put("touchSensorStatus", String(sensorValue));
